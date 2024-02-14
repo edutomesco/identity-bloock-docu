@@ -39,7 +39,7 @@ Currently in Bloock Identity you can use the following methods.
 ## did:polygonid
 
 The method id called `did:polygonid` has the following characteristics.
-- Is generated from three identity trees and controlled by [Baby JubJub keys](https://docs.iden3.io/publications/pdfs/Baby-Jubjub.pdf). Therefore this key you can create with [Bloock Keys product](reference_to_baby_jub_jub_keys documentation) in a managed way or by yourself locally. It will be very important to be able to control your identity.
+- Is generated from three identity trees and controlled by [Baby JubJub keys](https://docs.iden3.io/publications/pdfs/Baby-Jubjub.pdf). Therefore this key you can create with [Bloock Keys product](go_to_baby_jub_jub_keys documentation) in a managed way or by yourself locally. It will be very important to be able to control your identity.
 - Example:
 
 ![https://cdn.discordapp.com/attachments/1151100469490487307/1206965230601506866/Group_1162_1.png?ex=65ddecf7&is=65cb77f7&hm=36a6fdd770f7b18bbf028cbb723b995fdcf2e95f5e2fad8f4fa4d91b4bf6ebec&](https://cdn.discordapp.com/attachments/1151100469490487307/1206965230601506866/Group_1162_1.png?ex=65ddecf7&is=65cb77f7&hm=36a6fdd770f7b18bbf028cbb723b995fdcf2e95f5e2fad8f4fa4d91b4bf6ebec&)
@@ -62,7 +62,7 @@ The role of an issuer on Bloock Identity is to issue digital credentials to user
 
 #### Resources
 - Each issuer generates a DID and therefore a unique and public identifier that represents that identity. `For example: did:polygonid:polygon:main:2qCU58EJgrELSJT6EzT27Rw9DhvwamAdbMLpePztYq`. 
-- To create an issuer you need to have a key of type [Baby JubJub (BJJ)](https://docs.iden3.io/publications/pdfs/Baby-Jubjub.pdf), with [Bloock Keys product](reference_to_baby_jub_jub_keys documentation) you can create a managed key where you only need to save its identifier. `For example: 6f36448d-49f3-4b0e-aa72-6e55863302e8`.
+- To create an issuer you need to have a key of type [Baby JubJub (BJJ)](https://docs.iden3.io/publications/pdfs/Baby-Jubjub.pdf), with [Bloock Keys product](go_to_baby_jub_jub_keys documentation) you can create a managed key where you only need to save its identifier. `For example: 6f36448d-49f3-4b0e-aa72-6e55863302e8`.
 > You can also create an identity with your own local key of type BJJ. But then, you will have to maintain it on your own.
 - Every issuer must configure how often they want their credentials to be transacted to the blockchain. [Learn more about issuer intervals](go_to_issuer_intervals).
 
@@ -80,7 +80,7 @@ We currently offer these intervals.
 > Example: Let's imagine that you choose a frequency interval of 60 minutes. What it means is that all the credentials created during the last hour (60 minutes), will synchronously run a job that will collect them and execute a transaction on the blockchain. Once the transaction is completed and confirmed, an integrity proof (SMTP) will be automatically generated on all those credentials (each credential will have its own proof). In the case of using a `did:polygonid` issuer the network where the transaction is made is the one marked in the blockchain and network DID, i.e. `did:polygonid:polygon:main` will be transacted over the [polygon blockchain and the mainnet network](https://polygonscan.com/).
 
 ### The Verifiable Credential (VC)
-The first thing is to be clear that it is a [claim](link_a_what_it_is_a_claim). A credential is a set of one or more claims made by an issuer. 
+The first thing is to be clear that it is a [claim](go_to_a_what_it_is_a_claim). A credential is a set of one or more claims made by an issuer. 
 [Credentials](https://www.w3.org/TR/vc-data-model-2.0/#dfn-credential) might also include an identifier and metadata to describe properties of the credential, such as the validity date and time period, verification material, the revocation mechanism, and so on.
 The metadata might be signed by the issuer.
 A [Verifiable Credential (VC)](https://www.w3.org/TR/vc-data-model-2.0/#dfn-vc) is a set of tamper-evident claims and metadata that cryptographically prove who issued it.
@@ -180,7 +180,7 @@ Next, we must think about what type of credentials we want to issue. For example
 
 Once this is defined, I will be able to create my schema. Notice that all we are doing is defining the attributes that our credentials will have.
 
-[The schemas](go_tio_schemas_documentation) are uploaded to IPFS, in order to identify the schemas we use their IPFS identifier.
+[The schemas](go_to_schemas_documentation) are uploaded to IPFS, in order to identify the schemas we use their IPFS identifier.
 `Example: QmadTvnNKvj2fBDgen35uAp1TfP9pSPVCNeDWw4fitqqne`
 
 ### Create the credential
