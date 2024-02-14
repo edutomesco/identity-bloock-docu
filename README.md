@@ -62,7 +62,7 @@ The role of an issuer on Bloock Identity is to issue digital credentials to user
 
 #### Resources
 - Each issuer generates a DID and therefore a unique and public identifier that represents that identity. `For example: did:polygonid:polygon:main:2qCU58EJgrELSJT6EzT27Rw9DhvwamAdbMLpePztYq`. 
-- To create an issuer you need to have a key of type [Baby JubJub (BJJ)](https://docs.iden3.io/publications/pdfs/Baby-Jubjub.pdf), with [Bloock Keys product](go_to_baby_jub_jub_keys documentation) you can create a managed key where you only need to save its identifier. `For example: 6f36448d-49f3-4b0e-aa72-6e55863302e8`.
+- To create an issuer you need to have a key of type [Baby JubJub (BJJ)](https://docs.iden3.io/publications/pdfs/Baby-Jubjub.pdf), with [Bloock Keys product](go_to_baby_jub_jub_keys_documentation) you can create a managed key where you only need to save its identifier. `For example: 6f36448d-49f3-4b0e-aa72-6e55863302e8`.
 > You can also create an identity with your own local key of type BJJ. But then, you will have to maintain it on your own.
 - Every issuer must configure how often they want their credentials to be transacted to the blockchain. [Learn more about issuer intervals](go_to_issuer_intervals).
 
