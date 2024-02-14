@@ -80,7 +80,7 @@ We currently offer these intervals.
 > Example: Let's imagine that you choose a frequency interval of 60 minutes. What it means is that all the credentials created during the last hour (60 minutes), will asynchronously run a job that will collect them and execute a transaction on the blockchain. Once the transaction is completed and confirmed, an integrity proof (SMTP) will be automatically generated on all those credentials (each credential will have its own proof). In the case of using a `did:polygonid` issuer the network where the transaction is made is the one marked in the blockchain and network DID, i.e. `did:polygonid:polygon:main` will be transacted over the [polygon blockchain and the mainnet network](https://polygonscan.com/).
 
 ### The Verifiable Credential (VC)
-The first thing is to be clear that it is a [claim](go_to_a_what_it_is_a_claim). A credential is a set of one or more claims made by an issuer. 
+The first thing is to be clear what a [claim](go_to_a_what_it_is_a_claim) is. A credential is a set of one or more claims made by an issuer. 
 [Credentials](https://www.w3.org/TR/vc-data-model-2.0/#dfn-credential) might also include an identifier and metadata to describe properties of the credential, such as the validity date and time period, verification material, the revocation mechanism, and so on.
 The metadata might be signed by the issuer.
 A [Verifiable Credential (VC)](https://www.w3.org/TR/vc-data-model-2.0/#dfn-vc) is a set of tamper-evident claims and metadata that cryptographically prove who issued it.
