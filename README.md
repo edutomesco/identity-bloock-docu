@@ -2,29 +2,38 @@
 
 With Bloock Identity, developers can empower users to exchange credentials that are securely verified using advanced cryptography and blockchain technology. Tailored for developers, Bloock Identity prioritizes privacy, decentralization, and user data self-sovereignty.
 
-Bloock Identity follows the [Verifiable Credentials Data Model v2.0](https://www.w3.org/TR/vc-data-model-2.0/) standard and [Decentralized Identifiers (DIDs) v1.0](https://www.w3.org/TR/did-core/) standard.
+The protocol used by Bloock Identity is standarized under the [Verifiable Credentials Data Model v2.0](https://www.w3.org/TR/vc-data-model-2.0/) and [Decentralized Identifiers (DIDs) v1.0](https://www.w3.org/TR/did-core/) standards, both from developed by the [World Wide Web Consortium (W3C)](https://www.w3.org/).
 
 ## The basics
 
 ### What do we mean by Identity?
-An identity can be a person, a company, an organization, a DAO, or a government. Identity can even be a thing: a chair, a room, a bot, and so on. When we talk about identities, we are referring to "identities as accounts".
+An identity can be a person, a company, an organization, an entity, or a government. Identity can even be a thing: a chair, a room, a bot, and so on. When we talk about identities, we are referring to "identities as accounts".
 
 ### What is a claim?
 An Identity can provide a claim. You can think of a claim as a statement: something an Identity is saying.
 
 Most of the time, these statements refer to other identities. In other words, **claims usually create relations between identities.**
 
-For example, when a university (identity) says that a student (identity) has a degree, this is a statement (claim) about the student. This statement creates a relation between the student and the university.
+For example, when a university (identity) says that a student (identity) has a degree, this is a statement (claim) about the student. In this case, this statement creates a relation between the two identities, the student (also referred as holder) and the university (also referred as issuer).
 
 ### What are the agents in this process?
-- **Issuer**: An actor who makes a claim.
-- **Holder**: An actor who receives a claim.
-- **Verifier**: An actor who verifies if the content of a claim is issued by a specific identity and held by another specific identity.
+- **Issuer**: An identity who makes a claim.
+- **Holder**: An identity who receives a claim.
+- **Verifier**: An identity who verifies if the content of a claim is issued by a specific identity and held by another specific identity.
 
 ### And therefore, what is a verifiable credential?
-**Credential**: Data that is needed to prove that a claim is issued by a specific identity and held by another specific identity. This data is composed of **a claim and a proof**.
+A **Verifiable Credential (VC)** is the set of data that represents the statement made from an issuer to a holder and information needed to make this statement verifiable.  
+It usually contains:
+
+-   Information to identify the issuer
+-   Information to identity the holder
+-   The credential type or schema
+-   The attributes or properties being asserted by the issuer
+-   Evidences that can be used to verify the integrity and/or authenticity of the credential
+-   Other information such as validity period, terms, ...
 
 ## Decentralized Identifiers (DIDs)
+The [Decentralized Identifiers (DIDs)](https://www.w3.org/TR/did-core/#dfn-decentralized-identifiers) are a new type of globally unique identifier. They are designed to enable individuals and organizations to generate their own identifiers using systems they trust. These new identifiers enable entities to prove control over them by authenticating using cryptographic proofs such as digital signatures.
 
 A [DID](https://www.w3.org/TR/did-core/#dfn-decentralized-identifiers) is a simple text string consisting of three parts: 
 1. The `did` URI scheme identifier.
@@ -32,14 +41,16 @@ A [DID](https://www.w3.org/TR/did-core/#dfn-decentralized-identifiers) is a simp
 3. The DID method-specific identifier.
 
 ![https://cdn.discordapp.com/attachments/1151100469490487307/1206967003500511343/Group_1165.png?ex=65ddee9d&is=65cb799d&hm=ada436c44d4996110fa3241c212b26dfd610a9e94c1d9015600ff9d144708c8e&](https://cdn.discordapp.com/attachments/1151100469490487307/1206967003500511343/Group_1165.png?ex=65ddee9d&is=65cb799d&hm=ada436c44d4996110fa3241c212b26dfd610a9e94c1d9015600ff9d144708c8e&)
-Currently in Bloock Identity you can use the following methods.
+Currently in Bloock Identity only supports the method did:polygonid, but it's expected to add more in the future.
 - [did:polygonid](https://github.com/0xPolygonID/did-polygonid)
 - Soon they will be extended...
 
 ## did:polygonid
 
 The method id called `did:polygonid` has the following characteristics.
-- Is generated from three identity trees and controlled by [Baby JubJub keys](https://docs.iden3.io/publications/pdfs/Baby-Jubjub.pdf). Therefore this key you can create with [Bloock Keys product](go_to_baby_jub_jub_keys documentation) in a managed way or by yourself locally. It will be very important to be able to control your identity.
+- It's derived from a [Baby JubJub key](https://docs.iden3.io/publications/pdfs/Baby-Jubjub.pdf) and other cryptographic material. This key can be created with [Bloock Keys product](go_to_baby_jub_jub_keys documentation) in a managed way or by yourself locally. It will be very important to be able to control your identity.
+- [Here](https://github.com/iden3/go-iden3-crypto/tree/master/babyjub) you will find more technical information about the key creation.
+
 - Example:
 
 ![https://cdn.discordapp.com/attachments/1151100469490487307/1206965230601506866/Group_1162_1.png?ex=65ddecf7&is=65cb77f7&hm=36a6fdd770f7b18bbf028cbb723b995fdcf2e95f5e2fad8f4fa4d91b4bf6ebec&](https://cdn.discordapp.com/attachments/1151100469490487307/1206965230601506866/Group_1162_1.png?ex=65ddecf7&is=65cb77f7&hm=36a6fdd770f7b18bbf028cbb723b995fdcf2e95f5e2fad8f4fa4d91b4bf6ebec&)
@@ -215,5 +226,3 @@ TODO!
 
 ### Revoke the credential
 TODO!
-
-
