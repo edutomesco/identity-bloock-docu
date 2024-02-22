@@ -49,7 +49,7 @@ Currently in BLOOCK Identity only supports the method **did:polygonid**, but it'
 ## did:polygonid
 
 The method id called `did:polygonid` has the following characteristics.
-- It's derived from a [Baby JubJub key](https://docs.iden3.io/publications/pdfs/Baby-Jubjub.pdf) and other cryptographic material. This key can be created with [BLOOCK Keys product](#create-baby-jubJub-key) in a managed way or by yourself locally. It will be very important to be able to control your identity.
+- It's derived from a [Baby JubJub key](https://docs.iden3.io/publications/pdfs/Baby-Jubjub.pdf) and other cryptographic material. This key can be created with [BLOOCK Keys product](go_to_baby_jub_jub_keys_documentation) in a managed way or by yourself locally. It will be very important to be able to control your identity.
 - [Here](https://github.com/iden3/go-iden3-crypto/tree/master/babyjub) you will find more technical information about the key creation.
 
 - Example:
@@ -74,12 +74,12 @@ The role of an Issuer on BLOOCK Identity is to issue digital credentials to user
 - Each Issuer generates a DID and therefore a unique and public identifier that represents that identity. `For example: did:polygonid:polygon:main:2qCU58EJgrELSJT6EzT27Rw9DhvwamAdbMLpePztYq`. 
 - To create an Issuer you need to have a key of type [Baby JubJub (BJJ)](https://docs.iden3.io/publications/pdfs/Baby-Jubjub.pdf), with [BLOOCK Keys product](go_to_baby_jub_jub_keys_documentation) you can create a managed key where you only need to save its identifier. `For example: 6f36448d-49f3-4b0e-aa72-6e55863302e8`.
 > You can also create an identity with your own local key of type BJJ. But then, you will have to maintain it on your own.
-- Every Issuer must configure how often they want their credentials to be transacted to the blockchain. [Learn more about Issuer intervals](go_to_issuer_intervals).
+- Every Issuer must configure how often they want their credentials to be transacted to the blockchain. [Learn more about Issuer intervals](#issuer-intervals).
 
 #### Issuer intervals
-To understand this section, you must first understand what a [Sparse Merkle Tree Proof](go_to_sparse_merkle_tree_proof) is and how important it is to your business.
+To understand this section, you must first understand what a [Sparse Merkle Tree Proof](#sparse-merkle-tree-proof-(SMTP)) is and how important it is to your business.
 
-When an Issuer creates a credential, it will be instantly available synchronously. However, when you create an Issuer you will have to choose the transaction interval you want to apply (the cost of use will vary depending on the interval). When we talk about transaction, we talk about transacting your credentials to blockchain and get a proof of integrity of them that is transformed into a verifiable proof called [Sparse Merkle Tree Proof (SMTP)](go_to_sparse_merkle_tree_proof).
+When an Issuer creates a credential, it will be instantly available synchronously. However, when you create an Issuer you will have to choose the transaction interval you want to apply (the cost of use will vary depending on the interval). When we talk about transaction, we talk about transacting your credentials to blockchain and get a proof of integrity of them that is transformed into a verifiable proof called [Sparse Merkle Tree Proof (SMTP)](#sparse-merkle-tree-proof-(SMTP)).
 
 We currently offer these intervals.
 - 1 minute frequency.
@@ -90,7 +90,7 @@ We currently offer these intervals.
 > Example: Let's imagine that you choose a frequency interval of 60 minutes. What it means is that all the credentials created during the last hour (60 minutes), will asynchronously run a job that will collect them and execute a transaction on the blockchain. Once the transaction is completed and confirmed, an integrity proof (SMTP) will be automatically generated on all those credentials (each credential will have its own proof). In the case of using a `did:polygonid` Issuer the network where the transaction is made is the one marked in the blockchain and network DID, i.e. `did:polygonid:polygon:main` will be transacted over the [polygon blockchain and the mainnet network](https://polygonscan.com/).
 
 ### The Verifiable Credential (VC)
-The first thing is to be clear what a [claim](go_to_a_what_it_is_a_claim) is. A credential is a set of one or more claims made by an Issuer. 
+The first thing is to be clear what a [claim](#what-is-a-claim?) is. A credential is a set of one or more claims made by an Issuer. 
 [Credentials](https://www.w3.org/TR/vc-data-model-2.0/#dfn-credential) might also include an identifier and metadata to describe properties of the credential, such as the validity date and time period, verification material, the revocation mechanism, and so on.
 The metadata might be signed by the Issuer.
 A [Verifiable Credential (VC)](https://www.w3.org/TR/vc-data-model-2.0/#dfn-vc) is a set of tamper-evident claims and metadata that cryptographically prove who issued it.
@@ -98,9 +98,9 @@ A [Verifiable Credential (VC)](https://www.w3.org/TR/vc-data-model-2.0/#dfn-vc) 
 ![https://cdn.discordapp.com/attachments/1151100469490487307/1207640880496906271/Group_1325.png?ex=65e06236&is=65cded36&hm=37f9f2c8351494ea9014baaa4418cc82808315165a65128e2f831aa376856d9f&](https://cdn.discordapp.com/attachments/1151100469490487307/1207640880496906271/Group_1325.png?ex=65e06236&is=65cded36&hm=37f9f2c8351494ea9014baaa4418cc82808315165a65128e2f831aa376856d9f&)       
 #### Verifiable Credential in BLOOCK...
 - In BLOOCK Identity each credential is identified by a UUID. `For example: 6f36448d-49f3-4b0e-aa72-6e55863302e8`.
-- All credentials include a [proof of signature](go_to_proof_signature_explanation), i.e. every credential is signed by its Issuer.
-- Every credential must reference a schema. [Learn more about schemas](go_to_schema_explanation).
-- All credentials include a blockchain integrity proof or [Sparse Merkle Tree Proof (SMTP)](go_to_sparse_merkle_tree_proof) (this proof will be available depending on the [Issuer's configuration](go_to_issuer_interval)).
+- All credentials include a [proof of signature](#signature-proof), i.e. every credential is signed by its Issuer.
+- Every credential must reference a schema. [Learn more about schemas](#schemas).
+- All credentials include a blockchain integrity proof or [Sparse Merkle Tree Proof (SMTP)](#sparse-merkle-tree-proof-(SMTP)) (this proof will be available depending on the [Issuer's configuration](#issuer-intervals)).
 
 ### Schemas
 The reusability of credentials across platforms and services is guaranteed by credential schemas.
@@ -124,7 +124,7 @@ This proof is always generated synchronously when the credential is created.
 #### Sparse Merkle Tree Proof (SMTP)
 All the credentials that the Issuer creates are stored in a tree structure, specifically in a [Sparse Merkle Tree](https://docs.iden3.io/getting-started/mt/). 
 
-When an identity adds a new claim to his Claims Tree, the root of the tree and, consequently, the identity state change. The process of moving from one state to another is defined using [State Transition](go_to_state_transition_explanation).
+When an identity adds a new claim to his Claims Tree, the root of the tree and, consequently, the identity state change. The process of moving from one state to another is defined using [State Transition](#state-transition).
 
 ##### State Transition
 The **Issuer states** are published on the blockchain under the identifier, anchoring the state of the Issuer with the timestamp when it is published. In this way, the credentials of the Issuer can be proved against the anchored Issuer state at a certain timestamp. To transition from one state to the other, issuers follow the transition process.
@@ -133,11 +133,11 @@ The **Issuer states** are published on the blockchain under the identifier, anch
 Revocation is the process of invalidating a credential (VC). 
 Just as we have a tree structure ([SMT](https://docs.iden3.io/basics/key-concepts/#merkle-trees)) to store Issuer credentials, we also store revocations in a separate tree (SMT). These two structures will then mark the actual state of the Issuer. 
 Therefore, the action of adding the revocation to the revocation tree modifies the root of the revocation tree and, consequently, the identity state.
-> The most important thing to keep in mind is that **the revocation will only be effective** at the moment the [Issuer's state is transacted on the blockchain](go_to_state_transition_process). So, the effectiveness of the revocation will be marked by the [interval you have defined in the Issuer](go_to_interval_documentation).
+> The most important thing to keep in mind is that **the revocation will only be effective** at the moment the [Issuer's state is transacted on the blockchain](#state-transition). So, the effectiveness of the revocation will be marked by the [interval you have defined in the Issuer](#issuer-intervals).
 
 ### The Holder
-The Holder or the user receiving credentials. It is an identity and therefore has its own public [DID](go_to_did_docu). It is important that the Holder is of the same topology as the Issuer that will issue the credential. 
-Currently we only accept [did:polygonid](go_to_did:polygonid_docu) issuers and holders.
+The Holder or the user receiving credentials. It is an identity and therefore has its own public [DID](#decentralized-identifiers-(DIDs)). It is important that the Holder is of the same topology as the Issuer that will issue the credential. 
+Currently we only accept [did:polygonid](#did:polygonid) issuers and holders.
 
 For example.
 
@@ -146,22 +146,22 @@ For example.
 
 Currently your users will be able to create an identity using the PolygonID wallet, which can be downloaded [here](https://play.google.com/store/apps/details?id=com.polygonid.wallet&hl=en_US). 
 
-BLOOCK Identity will soon expand support for more [identity wallets](go_to_what_is_wallet_docu).
+BLOOCK Identity will soon expand support for more [identity wallets](#what-is-a-wallet?).
 
 ### What is a wallet?
 A digital wallet is an application or software designed to protect and manage identities or holders. A wallet allows you to interact with the Issuer when we want to obtain or acquire our credentials and interact with the Verifier to share and verify our proofs contained in our credentials.
 
 A wallet is controlled by an identity and therefore must have its own DID. That is why, in most of these wallets when we install the application the identity it's created. That identity will control the wallet. For example, the PolygonID wallet creates an identity like this: `did:polygonid:polygon:main:2q544HUegzeRpwr3V2qu9eMwgrAmF5x4E1NCPzbQc4`.
 
-Each wallet must follow a communication protocol in order to interact with the Issuer and the Verifier. For example, PolygonID wallet follows the [DIDComm protocol](go_to_did_comm_messaging_docu).
+Each wallet must follow a communication protocol in order to interact with the Issuer and the Verifier. For example, PolygonID wallet follows the [DIDComm protocol](#dIDComm-messaging).
 
 ### The Verifier
 The Verifier is the entity responsible for receiving and processing verifiable credentials. 
 
 The verification process consists of the evaluation of whether a Verifiable Credential is an authentic and current statement of the Issuer. This includes checking that: the credential conforms to the specification; the proof method is satisfied; and, if present, the status check succeeds.
 
-The Verifier is responsible for issuing a request to the Holder. This request contains the queries that the Holder must fulfill to be verified. [Here](go_to_queries_docu) to learn more about queries.
-The request of the Verifier is designed and encapsulated into a QR code to be shown to the Holder. The Holder scans the QR code with its [Wallet](go_to_wallet_docu) to prompt the proof generation.
+The Verifier is responsible for issuing a request to the Holder. This request contains the queries that the Holder must fulfill to be verified. [Here](#verification-queries) to learn more about queries.
+The request of the Verifier is designed and encapsulated into a QR code to be shown to the Holder. The Holder scans the QR code with its [Wallet](#what-is-a-wallet?) to prompt the proof generation.
 
 The verification process doesn’t involve any interaction between the Verifier and the Issuer of the requested credential. As part of the Query, the Verifier includes the identifiers of the trusted issuers.
 
@@ -175,11 +175,11 @@ This is the process that a verifier would perform:
 At BLOOCK Identity we offer you a verification model, but it is important that depending on your business model, you can customize it as much as you want. We perform a polling and expiration verification. Once the Verifier creates the Query request to the Holder, it starts what we call a verification process, which consists of simply polling a function that returns whether the request has been verified correctly or not (it returns a boolean). This polling process also has a timeout that you can configure. In addition, the verifications have a default expiration of 60 minutes, meaning that the Query request has an expiration of 60 minutes. If a user is already validated but the 60 minutes time expires, he/she will have to be validated again, this expiration period is also customizable.
 
 The Verifier must choose which type of proof to verify (you can only verify one type of proof).
-- [Atomic Query Signature V2](go_to_signature_proof): cryptographically verify the proof of signature of the credential.
-- [Atomic Query Sparse Merkle Tree V2](go_to_mtp_proof): cryptographically verify the sparse merkle tree proof of the credential.
+- [Atomic Query Signature V2](#signature-proof): cryptographically verify the proof of signature of the credential.
+- [Atomic Query Sparse Merkle Tree V2](#sparse-merkle-tree-proof-(SMTP)): cryptographically verify the sparse merkle tree proof of the credential.
 
 ### Verification queries
-BLOOCK Identity works with Zero-knowledge proof [(learn more about it here)](zero-knowledge-proof_docu). For this, we work with [Query language](https://devs.polygonid.com/docs/verifier/verification-library/zk-query-language/) specification, to provide a simple way for developers to design customized authentication requirements for someone's credentials.
+BLOOCK Identity works with Zero-knowledge proof [(learn more about it here)](#zero-knowledge-proof). For this, we work with [Query language](https://devs.polygonid.com/docs/verifier/verification-library/zk-query-language/) specification, to provide a simple way for developers to design customized authentication requirements for someone's credentials.
 
 As long as the user holds a credential of a specific type, the Verifier can design a query based on 6 operators, for example:
 
@@ -218,9 +218,9 @@ I have two options to get this key.
 
 ### Create the Issuer
 Once we have our key available, we will create the Issuer.  
-Before creating the Issuer we should think about how often we want the status of our Issuer to be transacted. [Here](go_to_intervals_documentation) you can see what intervals we have available. If you need information to make this decision you can contact us. For this example, let's imagine that I choose a 60-minute interval.
+Before creating the Issuer we should think about how often we want the status of our Issuer to be transacted. [Here](#issuer-intervals) you can see what intervals we have available. If you need information to make this decision you can contact us. For this example, let's imagine that I choose a 60-minute interval.
 
-Once we have our Issuer we can see its identity represented with its [DID](go_to_DIDs_identifier) (decentralized identifier). This is unique and totally public, this DID is directly related to the key you have created previously.
+Once we have our Issuer we can see its identity represented with its [DID](#decentralized-identifiers-(DIDs)) (decentralized identifier). This is unique and totally public, this DID is directly related to the key you have created previously.
 `Example: did:polygonid:polygon:main:2qCU58EJgrELSJT6EzT27Rw9DhvwamAdbMLpePztYq`
 
 ### Create the schema
@@ -230,7 +230,7 @@ Next, we must think about what type of credentials we want to issue. For example
 
 Once this is defined, I will be able to create my schema. Notice that all we are doing is defining the attributes that our credentials will have.
 
-[The schemas](go_to_schemas_documentation) are uploaded to IPFS, in order to identify the schemas we use their IPFS identifier.
+[The schemas](#schemas) are uploaded to IPFS, in order to identify the schemas we use their IPFS identifier.
 `Example: QmadTvnNKvj2fBDgen35uAp1TfP9pSPVCNeDWw4fitqqne`
 
 ### Create the credential
@@ -243,17 +243,17 @@ To create a credential, we will need two very important things.
 Once the credential is created we will obtain a UUID identifier.
 `Example: 0e3199ac-8147-4c7a-938b-d33f9107dace`
 
-The most important thing is that this credential is already a [Verifiable Credential (VC)](go_to_verifiable_credential_docu) because it already includes a signature proof, and therefore, this credential would already be valid to be verified by any verifier.
+The most important thing is that this credential is already a [Verifiable Credential (VC)](#the-verifiable-credential-(VC)) because it already includes a signature proof, and therefore, this credential would already be valid to be verified by any verifier.
 
 But BLOOCK Identity's product offers a second test, related to integrity in blockchain.
-The [Sparse Merkle Tree proof](go_to_sparse_merkle_tree_proof) is a proof that will be available depending on the [interval time](go_to_interval_issuer_documentation) you have chosen and is related to the Issuer's state. 
+The [Sparse Merkle Tree proof](#sparse-merkle-tree-proof-(SMTP)) is a proof that will be available depending on the [interval time](#issuer-intervals) you have chosen and is related to the Issuer's state. 
 As I have previously chosen a 60 minutes interval, it means that I will have my SMTP proof available after ~60 minutes.
 
 ### Credential offering
 The credential offering process refers to the transfer of the Verifiable Credential (VC) to the assigned user or Holder. 
-It requires two agents (Issuer and Holder) and a [wallet or software](go_to_what_is_a_wallet_docu) where the credential will be stored. 
+It requires two agents (Issuer and Holder) and a [wallet or software](#what-is-a-wallet?) where the credential will be stored. 
 At the Holder level, this is done by scanning a QR code generated by the Issuer from the Holder's wallet. 
-At the protocol level this communication is highly secure thanks to the [DIDComm protocol](go_to_did_comm_communication) used and the authentication and identity proofs mechanisms.
+At the protocol level this communication is highly secure thanks to the [DIDComm protocol](#dIDComm-messaging) used and the authentication and identity proofs mechanisms.
 
 Therefore, to execute the offering.
 1. The Issuer generates a request QR code.
