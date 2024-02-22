@@ -77,9 +77,9 @@ The role of an Issuer on BLOOCK Identity is to issue digital credentials to user
 - Every Issuer must configure how often they want their credentials to be transacted to the blockchain. [Learn more about Issuer intervals](#issuer-intervals).
 
 #### Issuer intervals
-To understand this section, you must first understand what a [Sparse Merkle Tree Proof](#sparse-merkle-tree-proof-(SMTP)) is and how important it is to your business.
+To understand this section, you must first understand what a [Sparse Merkle Tree Proof](#sparse-merkle-tree-proof) is and how important it is to your business.
 
-When an Issuer creates a credential, it will be instantly available synchronously. However, when you create an Issuer you will have to choose the transaction interval you want to apply (the cost of use will vary depending on the interval). When we talk about transaction, we talk about transacting your credentials to blockchain and get a proof of integrity of them that is transformed into a verifiable proof called [Sparse Merkle Tree Proof (SMTP)](#sparse-merkle-tree-proof-(SMTP)).
+When an Issuer creates a credential, it will be instantly available synchronously. However, when you create an Issuer you will have to choose the transaction interval you want to apply (the cost of use will vary depending on the interval). When we talk about transaction, we talk about transacting your credentials to blockchain and get a proof of integrity of them that is transformed into a verifiable proof called [Sparse Merkle Tree Proof (SMTP)](#sparse-merkle-tree-proof).
 
 We currently offer these intervals.
 - 1 minute frequency.
@@ -90,7 +90,7 @@ We currently offer these intervals.
 > Example: Let's imagine that you choose a frequency interval of 60 minutes. What it means is that all the credentials created during the last hour (60 minutes), will asynchronously run a job that will collect them and execute a transaction on the blockchain. Once the transaction is completed and confirmed, an integrity proof (SMTP) will be automatically generated on all those credentials (each credential will have its own proof). In the case of using a `did:polygonid` Issuer the network where the transaction is made is the one marked in the blockchain and network DID, i.e. `did:polygonid:polygon:main` will be transacted over the [polygon blockchain and the mainnet network](https://polygonscan.com/).
 
 ### The Verifiable Credential (VC)
-The first thing is to be clear what a [claim](#what-is-a-claim?) is. A credential is a set of one or more claims made by an Issuer. 
+The first thing is to be clear what a [claim](#what-is-a-claim) is. A credential is a set of one or more claims made by an Issuer. 
 [Credentials](https://www.w3.org/TR/vc-data-model-2.0/#dfn-credential) might also include an identifier and metadata to describe properties of the credential, such as the validity date and time period, verification material, the revocation mechanism, and so on.
 The metadata might be signed by the Issuer.
 A [Verifiable Credential (VC)](https://www.w3.org/TR/vc-data-model-2.0/#dfn-vc) is a set of tamper-evident claims and metadata that cryptographically prove who issued it.
@@ -100,7 +100,7 @@ A [Verifiable Credential (VC)](https://www.w3.org/TR/vc-data-model-2.0/#dfn-vc) 
 - In BLOOCK Identity each credential is identified by a UUID. `For example: 6f36448d-49f3-4b0e-aa72-6e55863302e8`.
 - All credentials include a [proof of signature](#signature-proof), i.e. every credential is signed by its Issuer.
 - Every credential must reference a schema. [Learn more about schemas](#schemas).
-- All credentials include a blockchain integrity proof or [Sparse Merkle Tree Proof (SMTP)](#sparse-merkle-tree-proof-(SMTP)) (this proof will be available depending on the [Issuer's configuration](#issuer-intervals)).
+- All credentials include a blockchain integrity proof or [Sparse Merkle Tree Proof (SMTP)](#sparse-merkle-tree-proof) (this proof will be available depending on the [Issuer's configuration](#issuer-intervals)).
 
 ### Schemas
 The reusability of credentials across platforms and services is guaranteed by credential schemas.
@@ -136,7 +136,7 @@ Therefore, the action of adding the revocation to the revocation tree modifies t
 > The most important thing to keep in mind is that **the revocation will only be effective** at the moment the [Issuer's state is transacted on the blockchain](#state-transition). So, the effectiveness of the revocation will be marked by the [interval you have defined in the Issuer](#issuer-intervals).
 
 ### The Holder
-The Holder or the user receiving credentials. It is an identity and therefore has its own public [DID](#decentralized-identifiers-(DIDs)). It is important that the Holder is of the same topology as the Issuer that will issue the credential. 
+The Holder or the user receiving credentials. It is an identity and therefore has its own public [DID](#decentralized-identifiers). It is important that the Holder is of the same topology as the Issuer that will issue the credential. 
 Currently we only accept [did:polygonid](#did:polygonid) issuers and holders.
 
 For example.
@@ -146,7 +146,7 @@ For example.
 
 Currently your users will be able to create an identity using the PolygonID wallet, which can be downloaded [here](https://play.google.com/store/apps/details?id=com.polygonid.wallet&hl=en_US). 
 
-BLOOCK Identity will soon expand support for more [identity wallets](#what-is-a-wallet?).
+BLOOCK Identity will soon expand support for more [identity wallets](#what-is-a-wallet).
 
 ### What is a wallet?
 A digital wallet is an application or software designed to protect and manage identities or holders. A wallet allows you to interact with the Issuer when we want to obtain or acquire our credentials and interact with the Verifier to share and verify our proofs contained in our credentials.
@@ -161,7 +161,7 @@ The Verifier is the entity responsible for receiving and processing verifiable c
 The verification process consists of the evaluation of whether a Verifiable Credential is an authentic and current statement of the Issuer. This includes checking that: the credential conforms to the specification; the proof method is satisfied; and, if present, the status check succeeds.
 
 The Verifier is responsible for issuing a request to the Holder. This request contains the queries that the Holder must fulfill to be verified. [Here](#verification-queries) to learn more about queries.
-The request of the Verifier is designed and encapsulated into a QR code to be shown to the Holder. The Holder scans the QR code with its [Wallet](#what-is-a-wallet?) to prompt the proof generation.
+The request of the Verifier is designed and encapsulated into a QR code to be shown to the Holder. The Holder scans the QR code with its [Wallet](#what-is-a-wallet) to prompt the proof generation.
 
 The verification process doesn’t involve any interaction between the Verifier and the Issuer of the requested credential. As part of the Query, the Verifier includes the identifiers of the trusted issuers.
 
@@ -176,7 +176,7 @@ At BLOOCK Identity we offer you a verification model, but it is important that d
 
 The Verifier must choose which type of proof to verify (you can only verify one type of proof).
 - [Atomic Query Signature V2](#signature-proof): cryptographically verify the proof of signature of the credential.
-- [Atomic Query Sparse Merkle Tree V2](#sparse-merkle-tree-proof-(SMTP)): cryptographically verify the sparse merkle tree proof of the credential.
+- [Atomic Query Sparse Merkle Tree V2](#sparse-merkle-tree-proof): cryptographically verify the sparse merkle tree proof of the credential.
 
 ### Verification queries
 BLOOCK Identity works with Zero-knowledge proof [(learn more about it here)](#zero-knowledge-proof). For this, we work with [Query language](https://devs.polygonid.com/docs/verifier/verification-library/zk-query-language/) specification, to provide a simple way for developers to design customized authentication requirements for someone's credentials.
@@ -220,7 +220,7 @@ I have two options to get this key.
 Once we have our key available, we will create the Issuer.  
 Before creating the Issuer we should think about how often we want the status of our Issuer to be transacted. [Here](#issuer-intervals) you can see what intervals we have available. If you need information to make this decision you can contact us. For this example, let's imagine that I choose a 60-minute interval.
 
-Once we have our Issuer we can see its identity represented with its [DID](#decentralized-identifiers-(DIDs)) (decentralized identifier). This is unique and totally public, this DID is directly related to the key you have created previously.
+Once we have our Issuer we can see its identity represented with its [DID](#decentralized-identifiers) (decentralized identifier). This is unique and totally public, this DID is directly related to the key you have created previously.
 `Example: did:polygonid:polygon:main:2qCU58EJgrELSJT6EzT27Rw9DhvwamAdbMLpePztYq`
 
 ### Create the schema
@@ -243,10 +243,10 @@ To create a credential, we will need two very important things.
 Once the credential is created we will obtain a UUID identifier.
 `Example: 0e3199ac-8147-4c7a-938b-d33f9107dace`
 
-The most important thing is that this credential is already a [Verifiable Credential (VC)](#the-verifiable-credential-(VC)) because it already includes a signature proof, and therefore, this credential would already be valid to be verified by any verifier.
+The most important thing is that this credential is already a [Verifiable Credential (VC)](#the-verifiable-credential) because it already includes a signature proof, and therefore, this credential would already be valid to be verified by any verifier.
 
 But BLOOCK Identity's product offers a second test, related to integrity in blockchain.
-The [Sparse Merkle Tree proof](#sparse-merkle-tree-proof-(SMTP)) is a proof that will be available depending on the [interval time](#issuer-intervals) you have chosen and is related to the Issuer's state. 
+The [Sparse Merkle Tree proof](#sparse-merkle-tree-proof) is a proof that will be available depending on the [interval time](#issuer-intervals) you have chosen and is related to the Issuer's state. 
 As I have previously chosen a 60 minutes interval, it means that I will have my SMTP proof available after ~60 minutes.
 
 ### Credential offering
