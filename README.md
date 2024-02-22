@@ -121,7 +121,7 @@ The claim gets signed by the Issuer using his private key. The proof of issuance
 
 This proof is always generated synchronously when the credential is created.
 
-#### Sparse Merkle Tree Proof (SMTP)
+#### Sparse Merkle Tree Proof(SMTP)
 All the credentials that the Issuer creates are stored in a tree structure, specifically in a [Sparse Merkle Tree](https://docs.iden3.io/getting-started/mt/). 
 
 When an identity adds a new claim to his Claims Tree, the root of the tree and, consequently, the identity state change. The process of moving from one state to another is defined using [State Transition](#state-transition).
