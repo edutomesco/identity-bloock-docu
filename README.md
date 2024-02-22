@@ -77,9 +77,9 @@ The role of an Issuer on BLOOCK Identity is to issue digital credentials to user
 - Every Issuer must configure how often they want their credentials to be transacted to the blockchain. [Learn more about Issuer intervals](#issuer-intervals).
 
 #### Issuer intervals
-To understand this section, you must first understand what a [Sparse Merkle Tree Proof](#sparse-merkle-tree-proof) is and how important it is to your business.
+To understand this section, you must first understand what a [Sparse Merkle Tree Proof](#proofs) is and how important it is to your business.
 
-When an Issuer creates a credential, it will be instantly available synchronously. However, when you create an Issuer you will have to choose the transaction interval you want to apply (the cost of use will vary depending on the interval). When we talk about transaction, we talk about transacting your credentials to blockchain and get a proof of integrity of them that is transformed into a verifiable proof called [Sparse Merkle Tree Proof (SMTP)](#sparse-merkle-tree-proof).
+When an Issuer creates a credential, it will be instantly available synchronously. However, when you create an Issuer you will have to choose the transaction interval you want to apply (the cost of use will vary depending on the interval). When we talk about transaction, we talk about transacting your credentials to blockchain and get a proof of integrity of them that is transformed into a verifiable proof called [Sparse Merkle Tree Proof (SMTP)](#proofs).
 
 We currently offer these intervals.
 - 1 minute frequency.
@@ -100,7 +100,7 @@ A [Verifiable Credential (VC)](https://www.w3.org/TR/vc-data-model-2.0/#dfn-vc) 
 - In BLOOCK Identity each credential is identified by a UUID. `For example: 6f36448d-49f3-4b0e-aa72-6e55863302e8`.
 - All credentials include a [proof of signature](#signature-proof), i.e. every credential is signed by its Issuer.
 - Every credential must reference a schema. [Learn more about schemas](#schemas).
-- All credentials include a blockchain integrity proof or [Sparse Merkle Tree Proof (SMTP)](#sparse-merkle-tree-proof) (this proof will be available depending on the [Issuer's configuration](#issuer-intervals)).
+- All credentials include a blockchain integrity proof or [Sparse Merkle Tree Proof (SMTP)](#proofs) (this proof will be available depending on the [Issuer's configuration](#issuer-intervals)).
 
 ### Schemas
 The reusability of credentials across platforms and services is guaranteed by credential schemas.
@@ -121,7 +121,7 @@ The claim gets signed by the Issuer using his private key. The proof of issuance
 
 This proof is always generated synchronously when the credential is created.
 
-#### Sparse Merkle Tree Proof(SMTP)
+#### Sparse Merkle Tree Proof (SMTP)
 All the credentials that the Issuer creates are stored in a tree structure, specifically in a [Sparse Merkle Tree](https://docs.iden3.io/getting-started/mt/). 
 
 When an identity adds a new claim to his Claims Tree, the root of the tree and, consequently, the identity state change. The process of moving from one state to another is defined using [State Transition](#state-transition).
@@ -176,7 +176,7 @@ At BLOOCK Identity we offer you a verification model, but it is important that d
 
 The Verifier must choose which type of proof to verify (you can only verify one type of proof).
 - [Atomic Query Signature V2](#signature-proof): cryptographically verify the proof of signature of the credential.
-- [Atomic Query Sparse Merkle Tree V2](#sparse-merkle-tree-proof): cryptographically verify the sparse merkle tree proof of the credential.
+- [Atomic Query Sparse Merkle Tree V2](#proofs): cryptographically verify the sparse merkle tree proof of the credential.
 
 ### Verification queries
 BLOOCK Identity works with Zero-knowledge proof [(learn more about it here)](#zero-knowledge-proof). For this, we work with [Query language](https://devs.polygonid.com/docs/verifier/verification-library/zk-query-language/) specification, to provide a simple way for developers to design customized authentication requirements for someone's credentials.
@@ -246,7 +246,7 @@ Once the credential is created we will obtain a UUID identifier.
 The most important thing is that this credential is already a [Verifiable Credential (VC)](#the-verifiable-credential) because it already includes a signature proof, and therefore, this credential would already be valid to be verified by any verifier.
 
 But BLOOCK Identity's product offers a second test, related to integrity in blockchain.
-The [Sparse Merkle Tree proof](#sparse-merkle-tree-proof) is a proof that will be available depending on the [interval time](#issuer-intervals) you have chosen and is related to the Issuer's state. 
+The [Sparse Merkle Tree proof](#proofs) is a proof that will be available depending on the [interval time](#issuer-intervals) you have chosen and is related to the Issuer's state. 
 As I have previously chosen a 60 minutes interval, it means that I will have my SMTP proof available after ~60 minutes.
 
 ### Credential offering
