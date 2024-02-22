@@ -98,7 +98,7 @@ A [Verifiable Credential (VC)](https://www.w3.org/TR/vc-data-model-2.0/#dfn-vc) 
 ![https://cdn.discordapp.com/attachments/1151100469490487307/1207640880496906271/Group_1325.png?ex=65e06236&is=65cded36&hm=37f9f2c8351494ea9014baaa4418cc82808315165a65128e2f831aa376856d9f&](https://cdn.discordapp.com/attachments/1151100469490487307/1207640880496906271/Group_1325.png?ex=65e06236&is=65cded36&hm=37f9f2c8351494ea9014baaa4418cc82808315165a65128e2f831aa376856d9f&)       
 #### Verifiable Credential in BLOOCK...
 - In BLOOCK Identity each credential is identified by a UUID. `For example: 6f36448d-49f3-4b0e-aa72-6e55863302e8`.
-- All credentials include a [proof of signature](#signature-proof), i.e. every credential is signed by its Issuer.
+- All credentials include a [proof of signature](#proofs), i.e. every credential is signed by its Issuer.
 - Every credential must reference a schema. [Learn more about schemas](#schemas).
 - All credentials include a blockchain integrity proof or [Sparse Merkle Tree Proof (SMTP)](#proofs) (this proof will be available depending on the [Issuer's configuration](#issuer-intervals)).
 
