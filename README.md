@@ -49,7 +49,7 @@ Currently in BLOOCK Identity only supports the method **did:polygonid**, but it'
 ## did:polygonid
 
 The method id called `did:polygonid` has the following characteristics.
-- It's derived from a [Baby JubJub key](https://docs.iden3.io/publications/pdfs/Baby-Jubjub.pdf) and other cryptographic material. This key can be created with [BLOOCK Keys product](go_to_baby_jub_jub_keys documentation) in a managed way or by yourself locally. It will be very important to be able to control your identity.
+- It's derived from a [Baby JubJub key](https://docs.iden3.io/publications/pdfs/Baby-Jubjub.pdf) and other cryptographic material. This key can be created with [BLOOCK Keys product](#create-baby-jubJub-key) in a managed way or by yourself locally. It will be very important to be able to control your identity.
 - [Here](https://github.com/iden3/go-iden3-crypto/tree/master/babyjub) you will find more technical information about the key creation.
 
 - Example:
@@ -202,10 +202,12 @@ BLOOCK Identity works with this type of proofs technology, so the security and p
 ### DIDComm messaging
 BLOOCK Identity uses the DIDComm messaging protocol for communication between agents and wallets. The purpose of [DIDComm Messaging](https://identity.foundation/didcomm-messaging/spec/) is to provide a secure, private communication methodology built atop the decentralized design of [DIDs](https://www.w3.org/TR/did-core/). We use this protocol with the [Iden3comm](https://iden3-communication.io/). 
 
+
+
 ## Understand the flow
 Let's describe how an end-to-end flow works to see how all the terms described above relate to each other in BLOOCK Identity.
 
-### Create BJJ key
+### Create Baby JubJub key
 In order to create an identity in BLOOCK Identity I will first need to create or have a Baby JubJub (BJJ) key. This key will be very important to have it saved because it will be used to control our Issuer.
 
 I have two options to get this key.
