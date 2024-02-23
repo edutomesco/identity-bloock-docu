@@ -275,5 +275,5 @@ If you want to use our verification process, here is how it works:
 
 ### 7. Revoke the credential
 Finally, Issuer may decide to revoke or invalidate any credential. Therefore, you will have to execute the [revocation](#revocation) process. 
-What it means to have your credential revoked is that the Holder will not be able to generate any [proof](#proofs).
-When you revoke a credential the only proof that can prove that is the [Sparse Merkle Tree Proof](#proof). Therefore, we need the [Issuer's state](#state-transition) to be processed once the revocation action is executed. And obviously this state transition will be marked by the [interval](#interval-issuers) we have set. **It is important to note that the effect of the revocation will not be visible until this Issuer state transition is executed**.
+Having a credential revoked what it means is that the Holder will not be able to generate any [proof](#proofs).
+When you revoke a credential what we are doing is generate a new [Sparse Merkle Tree Proof](#proof) of revoation. Therefore, we need the [Issuer's state](#state-transition) to be processed once the revocation action is executed. And obviously this state transition will be marked by the [interval](#interval-issuers) we have set. **It is important to note that the effect of the revocation will not be visible until this Issuer state transition is executed**.
